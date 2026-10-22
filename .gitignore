@@ -1,0 +1,13 @@
+# Secrets niemals committen
+*.env
+.env*
+secrets/
+*.key
+
+# Laufzeit-Artefakte
+__pycache__/
+*.pyc
+run/
+out/
+in/
+*.log
