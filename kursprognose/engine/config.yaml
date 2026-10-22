@@ -1,0 +1,272 @@
+api_keys:
+  fred: ''
+  finnhub: ''
+  alpha_vantage: ''
+  x_bearer_token: ''
+  truth_social_api_key: ''
+  truth_social_api_base: ''
+assets:
+- symbol: DAX
+  name: DAX Performance-Index
+  yahoo_ticker: ^GDAXI
+  news_keywords:
+  - DAX
+  - Deutsche Börse
+  - deutsche Aktien
+  - Frankfurt Börse
+- symbol: MDAX
+  name: MDAX Performance-Index
+  yahoo_ticker: ^MDAXI
+  news_keywords:
+  - MDAX
+  - Nebenwerte
+  - deutsche Nebenwerte
+- symbol: OEL
+  name: Rohöl (Brent)
+  yahoo_ticker: BZ=F
+  news_keywords:
+  - Ölpreis
+  - Rohöl
+  - Brent
+  - OPEC
+  - Erdöl
+- symbol: SAP
+  name: SAP SE
+  yahoo_ticker: SAP.DE
+  news_keywords:
+  - SAP
+  - SAP SE
+  - SAP Aktie
+- symbol: AAPL
+  name: Apple Inc.
+  yahoo_ticker: AAPL
+  news_keywords:
+  - Apple
+  - Apple Inc
+  - iPhone
+  - AAPL Aktie
+methods:
+- id: 1
+  name: technical
+  label: 'Methode 1: Technische Kursanalyse (Yahoo Finance)'
+  module: methods.technical_method
+  enabled: true
+  params:
+    lookback_days: 90
+    sma_short: 20
+    sma_long: 50
+    rsi_period: 14
+- id: 2
+  name: sentiment
+  label: 'Methode 2: News- & Stimmungsdaten'
+  module: methods.sentiment_method
+  enabled: true
+  params:
+    max_headlines: 40
+    lookback_hours: 36
+- id: 3
+  name: geopolitical
+  label: 'Methode 3: Geopolitische & Makro-Daten (GDELT)'
+  module: methods.geo_method
+  enabled: true
+  params:
+    lookback_hours: 48
+    max_records: 250
+- id: 4
+  name: analyst_ratings
+  label: 'Methode 4: Analysten-Konsens'
+  module: methods.analyst_ratings
+  enabled: true
+  params: {}
+- id: 5
+  name: insider_transactions
+  label: 'Methode 5: Insider-Transaktionen'
+  module: methods.insider_transactions
+  enabled: true
+  params:
+    lookback_days: 90
+- id: 6
+  name: institutional_holdings
+  label: 'Methode 6: Institutionelle Holdings'
+  module: methods.institutional_holdings
+  enabled: true
+  params:
+    schwellenwert: 0.6
+- id: 7
+  name: earnings_surprise
+  label: 'Methode 7: Gewinnüberraschungen'
+  module: methods.earnings_surprise
+  enabled: true
+  params: {}
+- id: 8
+  name: options_flow
+  label: 'Methode 8: Optionsmarkt Put/Call-Ratio'
+  module: methods.options_flow
+  enabled: true
+  params: {}
+- id: 9
+  name: short_interest
+  label: 'Methode 9: Leerverkaufsquote'
+  module: methods.short_interest
+  enabled: true
+  params:
+    schwellenwert: 0.03
+- id: 10
+  name: volatility_regime
+  label: 'Methode 10: Volatilitätsregime'
+  module: methods.volatility_regime
+  enabled: true
+  params:
+    kurz_tage: 10
+    lang_tage: 60
+- id: 11
+  name: currency_correlation
+  label: 'Methode 11: Währungskorrelation (EUR/USD)'
+  module: methods.currency_correlation
+  enabled: true
+  params:
+    referenz_ticker: EURUSD=X
+    lookback_days: 10
+- id: 12
+  name: commodity_correlation
+  label: 'Methode 12: Rohstoffkorrelation (Gold)'
+  module: methods.commodity_correlation
+  enabled: true
+  params:
+    referenz_ticker: GC=F
+    lookback_days: 10
+- id: 13
+  name: sector_rotation
+  label: 'Methode 13: Sektorrotation / relative Stärke'
+  module: methods.sector_rotation
+  enabled: true
+  params:
+    lookback_days: 20
+- id: 14
+  name: seasonality
+  label: 'Methode 14: Saisonalität'
+  module: methods.seasonality
+  enabled: true
+  params:
+    jahre: 5
+- id: 15
+  name: correlation_breakdown
+  label: 'Methode 15: Korrelationsverschiebung'
+  module: methods.correlation_breakdown
+  enabled: true
+  params:
+    kurz_tage: 15
+    lang_tage: 90
+- id: 16
+  name: yield_curve
+  label: 'Methode 16: US-Zinsstrukturkurve'
+  module: methods.yield_curve
+  enabled: true
+  params:
+    ticker_10j: ^TNX
+    ticker_13w: ^IRX
+- id: 17
+  name: political_influencers
+  label: 'Methode 17: Politische Einfluss-Posts (Trump/Musk)'
+  module: methods.political_influencers
+  enabled: false
+  params:
+    max_posts_je_account: 10
+- id: 18
+  name: google_trends
+  label: 'Methode 18: Google-Suchinteresse'
+  module: methods.google_trends
+  enabled: false
+  params: {}
+- id: 19
+  name: macro_surprise_index
+  label: 'Methode 19: Makro-Überraschungsindex'
+  module: methods.macro_surprise_index
+  enabled: false
+  params: {}
+- id: 20
+  name: interest_rate_differential
+  label: 'Methode 20: Zinsdifferenz Fed/EZB'
+  module: methods.interest_rate_differential
+  enabled: true
+  params:
+    fed_series: FEDFUNDS
+    ecb_series: ECBDFR
+- id: 21
+  name: claude_news
+  label: 'Methode 21: Claude-Nachrichtenanalyse'
+  module: claude
+  enabled: true
+  params:
+    assets:
+    - DAX
+    - MDAX
+- id: 22
+  name: overnight_lead
+  label: 'Methode 22: Übernacht-Vorlauf (US-Futures/Nikkei)'
+  module: methods.overnight_lead
+  enabled: true
+  params:
+    assets:
+    - DAX
+    - MDAX
+- id: 23
+  name: fear_gauge
+  label: 'Methode 23: Angstbarometer (VIX)'
+  module: methods.fear_gauge
+  enabled: true
+  params:
+    assets:
+    - DAX
+    - MDAX
+- id: 24
+  name: market_breadth
+  label: 'Methode 24: Marktbreite DAX 40'
+  module: methods.market_breadth
+  enabled: true
+  params:
+    assets:
+    - DAX
+    - MDAX
+news_sources:
+- name: Tagesschau Wirtschaft
+  rss_url: https://www.tagesschau.de/wirtschaft/index~rss2.xml
+- name: Finanzen.net Schlagzeilen
+  rss_url: https://www.finanzen.net/rss/news
+- name: Reuters Business
+  rss_url: https://feeds.reuters.com/reuters/businessNews
+- name: Boersen-Zeitung
+  rss_url: https://www.boersen-zeitung.de/rss
+geo_source:
+  gdelt_doc_api: https://api.gdeltproject.org/api/v2/doc/doc
+run_slots:
+- name: morning
+  time: 09:00
+  description: Nach Öffnung der deutschen Börse
+- name: afternoon
+  time: '15:35'
+  description: Nach Öffnung der Wall Street / Dow Jones
+- name: evening
+  time: '22:00'
+  description: Abends, nach Handelsschluss - finaler Tageswert
+alerts:
+  assets:
+  - DAX
+  - MDAX
+  mail_to: dergrewing@live.de
+  mail_levels:
+  - warnung
+  - kritisch
+  move1d_warn: -2.0
+  move1d_crit: -3.5
+  move1d_up: 2.5
+  move3d_warn: -5.0
+  move3d_crit: -8.0
+  dd_warn: -10.0
+  dd_crit: -20.0
+  rsi_low: 25.0
+  rsi_high: 75.0
+  overheat_sma50: 7.0
+  vix_level: 30.0
+  vix_jump: 20.0
+  overnight: 1.5
