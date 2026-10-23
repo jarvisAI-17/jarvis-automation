@@ -6,6 +6,7 @@ Code und Prompts der JARVIS-Automatisierungen. Alles läuft in der Cloud (geplan
 
 ```
 kursprognose/engine/   Rechenkern der Kursprognose (Python): run.py, alerts.py, methods/, sources/
+mail/                  JARVIS-Mail-Template (HTML), Logo und PowerShell-Funktionen zum Versand
 prompts/               Sicherung der Prompts aller geplanten Aufgaben (Stand je Datei)
 ```
 
