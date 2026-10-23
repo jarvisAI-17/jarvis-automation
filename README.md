@@ -20,6 +20,7 @@ prompts/               Sicherung der Prompts aller geplanten Aufgaben (Stand je 
 | Morgenbriefing | Mo–Fr 09:10 | [morgenbriefing.md](prompts/morgenbriefing.md) |
 | Kursprognose Alarm-Kurzcheck | Mo–Fr 10–14, 16, 17 Uhr (:07) | [kursprognose-alarm-kurzcheck.md](prompts/kursprognose-alarm-kurzcheck.md) |
 | Trink-Erinnerung | täglich 11:44 | [trink-erinnerung.md](prompts/trink-erinnerung.md) |
+| Inserate-Check (Cockpit) | täglich 07:41 und 18:41 | [inserate-check.md](prompts/inserate-check.md) |
 | Immobilien-Radar: Details nachladen | nur manuell | [immobilien-radar-nachladen.md](prompts/immobilien-radar-nachladen.md) |
 
 ## Regeln
