@@ -55,7 +55,7 @@ Arbeite ohne Rückfragen. Lade das Tool ArtifactData per ToolSearch ("select:Art
 
 7. E-MAIL mit dem Gmail-Tool send_message an die Adresse aus einstellungen/zeitplan.email (nur an diese, niemand sonst):
    Betreff: „Immobilien-Radar: <n> neue Treffer“ bzw. „Immobilien-Radar: keine neuen Treffer“ – mit Datum (TT.MM.).
-   htmlBody (inline-CSS, schlicht, dunkle Kopfzeile #0D1318 mit „JARVIS“ in #FF7A1A und „Immobilien-Radar“ in #8CD2FA, Text #0F171D auf Weiß):
+   htmlBody (inline-CSS, schlicht, dunkle Kopfzeile #0A0F1C mit „VEGA“ in #EEF3FF (Versalien, letter-spacing 0.22em) und „Immobilien-Radar“ in #8FB8FF, darunter eine 3px-Linie in #FFB547, Text #0E1526 auf Weiß, Links #2856B8):
    - je aktivem Profil eine Überschrift mit Profilname, Preisspanne und Anzahl neuer Treffer;
    - je neuem Treffer eine Zeile/Karte: Bild (<img src="bildUrl" width="160">, falls vorhanden), Titel als Link zur Exposé-URL, Preis (bei Miete „kalt“), m², Zimmer, Ort, ca.-Entfernung, Quelle, bei vorhandenen Details die Risiken/Prüfpunkte als kurze farbige Stichworte (Risiko #BF2A2A, Prüfen #7A5600) und das Fazit;
    - am Ende: Gesamtzahl passender Angebote, Anzahl ausgeblendeter (falls > 0), Anzahl nachgeladener Details (falls > 0), Fehlerhinweise, Link „In der App öffnen“ → https://claude.ai/artifact/GMG6xBcLXv8eD97EhCknWH.

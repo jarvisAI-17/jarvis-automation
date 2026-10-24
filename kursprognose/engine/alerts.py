@@ -196,7 +196,7 @@ def mail(new_alerts, today_doc, cfg_alerts=None):
             "Automatischer Hinweis deines Kursprognose-Systems. Keine Anlageberatung.")
     body = "\n".join(lines) + "\n" + foot
     htmlb = ('<div style="max-width:620px;font-family:Arial,sans-serif">'
-             '<div style="font:600 20px/28px Arial;color:#0f171d;margin:0 0 12px">JARVIS Kursprognose – Alarm</div>'
+             '<div style="font:600 20px/28px Arial;color:#0f171d;margin:0 0 12px">VEGA Kursprognose – Alarm</div>'
              + "".join(html) +
              f'<p style="font:13px/20px Arial;color:#4e5f6b">{" · ".join(ctx)}<br>'
              f'<a href="{P["app_url"]}" style="color:#0b6a99">App öffnen</a><br>Automatischer Hinweis. Keine Anlageberatung.</p></div>')

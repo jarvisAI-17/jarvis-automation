@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>{{BETREFF}}</title>
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<style>table,td,p,a,span,h1{font-family:Segoe UI,Arial,sans-serif !important;}</style>
+<![endif]-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Sora:wght@600&family=JetBrains+Mono&display=swap');
+  body { margin:0; padding:0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+  img { border:0; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; }
+  a { color:#2856b8; }
+  @media only screen and (max-width:620px) {
+    .jv-container { width:100% !important; }
+    .jv-pad { padding-left:20px !important; padding-right:20px !important; }
+    .jv-h1 { font-size:22px !important; line-height:30px !important; }
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#f6f8fc;">
+
+<!-- Vorschauzeile im Posteingang (unsichtbar) -->
+<div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#f6f8fc;">{{VORSCHAU}}&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;&#8204;&nbsp;</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f6f8fc;">
+<tr><td align="center" style="padding:32px 12px;">
+
+  <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+  <table role="presentation" class="jv-container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#ffffff; border:1px solid #d5ddeb; border-radius:14px; border-collapse:separate; overflow:hidden;">
+
+    <!-- KOPF: Nachtfläche + Lockup -->
+    <tr>
+      <td class="jv-pad" style="background-color:#0a0f1c; padding:20px 32px; border-radius:14px 14px 0 0;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td valign="middle">
+              <img src="cid:vega-logo.png" width="101" height="32" alt="VEGA" style="display:block; width:101px; height:32px; color:#eef3ff; font-family:Arial,sans-serif; font-size:18px; font-weight:bold;">
+            </td>
+            <td valign="middle" align="right" style="font-family:'IBM Plex Sans',Segoe UI,Arial,sans-serif; font-size:12px; line-height:16px; font-weight:500; letter-spacing:0.12em; color:#8fb8ff; text-transform:uppercase;">
+              {{KATEGORIE}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- Akzentlinie -->
+    <tr><td style="height:3px; line-height:3px; font-size:0; background-color:#ffb547;">&nbsp;</td></tr>
+
+    <!-- INHALT -->
+    <tr>
+      <td class="jv-pad" style="padding:32px 32px 8px 32px; font-family:'IBM Plex Sans',Segoe UI,Arial,sans-serif; color:#0e1526;">
+
+        <h1 class="jv-h1" style="margin:0 0 16px 0; font-family:'Sora',Segoe UI,Arial,sans-serif; font-size:24px; line-height:32px; font-weight:600; letter-spacing:-0.01em; color:#0e1526;">{{TITEL}}</h1>
+
+        <p style="margin:0 0 16px 0; font-size:15px; line-height:24px; color:#0e1526;">{{ANREDE}}</p>
+
+        <div style="margin:0 0 24px 0; font-size:15px; line-height:24px; color:#0e1526;">{{TEXT}}</div>
+
+        <!-- BLOCK:FAKTEN (optional, Zeilen nach Bedarf kopieren) -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px 0; border-top:1px solid #d5ddeb;">
+          {{FAKTEN_ZEILEN}}
+        </table>
+        <!-- /BLOCK:FAKTEN -->
+
+        <!-- BLOCK:INFO (optional) -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px 0;">
+          <tr>
+            <td style="background-color:#e3ecff; border-radius:8px; padding:12px 16px; font-family:'IBM Plex Sans',Segoe UI,Arial,sans-serif; font-size:14px; line-height:22px; color:#0e1526;">
+              <span style="font-size:12px; line-height:16px; font-weight:600; letter-spacing:0.08em; color:#2856b8;">HINWEIS</span><br>
+              {{INFO}}
+            </td>
+          </tr>
+        </table>
+        <!-- /BLOCK:INFO -->
+
+        <!-- BLOCK:CODE (optional) -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px 0;">
+          <tr>
+            <td style="background-color:#e6ecf6; border-radius:4px; padding:12px 16px; font-family:'JetBrains Mono',Consolas,'Courier New',monospace; font-size:13px; line-height:20px; color:#0e1526; white-space:pre-wrap; word-break:break-all;">{{CODE}}</td>
+          </tr>
+        </table>
+        <!-- /BLOCK:CODE -->
+
+        <!-- BLOCK:BUTTON (optional, max. einer pro Mail) -->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px 0;">
+          <tr>
+            <td>
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{BUTTON_URL}}" style="height:44px; v-text-anchor:middle; width:220px;" arcsize="18%" stroke="f" fillcolor="#9a5b00">
+                <w:anchorlock/><center style="color:#ffffff; font-family:Segoe UI,Arial,sans-serif; font-size:15px; font-weight:600;">{{BUTTON_TEXT}}</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-->
+              <a href="{{BUTTON_URL}}" style="display:inline-block; background-color:#9a5b00; color:#ffffff; font-family:'IBM Plex Sans',Segoe UI,Arial,sans-serif; font-size:15px; line-height:20px; font-weight:600; text-decoration:none; padding:12px 24px; border-radius:8px;">{{BUTTON_TEXT}}</a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+        </table>
+        <!-- /BLOCK:BUTTON -->
+
+        <p style="margin:0 0 4px 0; font-size:15px; line-height:24px; color:#0e1526;">{{GRUSS}}</p>
+        <p style="margin:0 0 32px 0; font-size:15px; line-height:24px; color:#0e1526;">
+          <strong style="font-weight:600;">{{ABSENDER_NAME}}</strong><br>
+          <span style="font-size:13px; line-height:20px; color:#535e73;">{{ABSENDER_ROLLE}}</span>
+        </p>
+      </td>
+    </tr>
+
+    <!-- FUSS -->
+    <tr>
+      <td class="jv-pad" style="background-color:#e6ecf6; padding:16px 32px; border-top:1px solid #d5ddeb; border-radius:0 0 14px 14px; font-family:'IBM Plex Sans',Segoe UI,Arial,sans-serif; font-size:13px; line-height:20px; color:#535e73;">
+        {{FUSSZEILE}}
+      </td>
+    </tr>
+
+  </table>
+  <!--[if mso]></td></tr></table><![endif]-->
+
+</td></tr>
+</table>
+</body>
+</html>

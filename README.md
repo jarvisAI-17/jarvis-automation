@@ -1,12 +1,12 @@
 # jarvis-automation
 
-Code und Prompts der JARVIS-Automatisierungen. Alles läuft in der Cloud (geplante Aufgaben in Claude), kein lokaler Rechner nötig.
+Code und Prompts der VEGA-Automatisierungen (vormals JARVIS). Alles läuft in der Cloud (geplante Aufgaben in Claude), kein lokaler Rechner nötig.
 
 ## Struktur
 
 ```
 kursprognose/engine/   Rechenkern der Kursprognose (Python): run.py, alerts.py, methods/, sources/
-mail/                  JARVIS-Mail-Template (HTML), Logo und PowerShell-Funktionen zum Versand
+mail/                  VEGA-Mail-Template (HTML), Logo und PowerShell-Funktionen zum Versand
 prompts/               Sicherung der Prompts aller geplanten Aufgaben (Stand je Datei)
 ```
 
@@ -26,4 +26,4 @@ prompts/               Sicherung der Prompts aller geplanten Aufgaben (Stand je 
 ## Regeln
 
 - **Keine Secrets im Repo.** API-Keys stehen nur in den Aufgaben bzw. als Umgebungsvariablen (`KP_FRED`, `KP_FINNHUB`, `KP_ALPHA_VANTAGE`). In `prompts/` sind sie durch Platzhalter ersetzt. `config.yaml` enthält leere Key-Felder.
-- Die Aufgaben laden den Code derzeit noch aus dem Artefakt „JARVIS Kursprognose“ (`engine.zip.b64.txt`). Das Repo ist bis zur Umstellung die Referenz bzw. Sicherung.
+- Die Aufgaben laden den Code derzeit noch aus dem Artefakt „VEGA Kursprognose“ (`engine.zip.b64.txt`). Das Repo ist bis zur Umstellung die Referenz bzw. Sicherung.

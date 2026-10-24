@@ -1,36 +1,36 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    JARVIS-Mail: HTML-Template befüllen, lokal vorschauen und per Microsoft Graph senden.
+    VEGA-Mail: HTML-Template befüllen, lokal vorschauen und per Microsoft Graph senden.
 
 .DESCRIPTION
     Dateien im selben Ordner erwartet:
-      jarvis-mail-template.html   – Template mit {{PLATZHALTERN}}
-      jarvis-logo.png             – Logo, wird als Inline-Anhang (cid:jarvis-logo.png) eingebettet
+      vega-mail-template.html   – Template mit {{PLATZHALTERN}}
+      vega-logo.png             – Logo, wird als Inline-Anhang (cid:vega-logo.png) eingebettet
 
     Optionale Blöcke (FAKTEN, INFO, CODE, BUTTON) werden automatisch entfernt,
     wenn die zugehörigen Parameter leer bleiben.
 
 .EXAMPLE
-    . .\JarvisMail.ps1
-    $html = New-JarvisMailHtml -Betreff 'Statusbericht KW 43' -Kategorie 'Status-Update' `
+    . .\VegaMail.ps1
+    $html = New-VegaMailHtml -Betreff 'Statusbericht KW 43' -Kategorie 'Status-Update' `
             -Titel 'Migration abgeschlossen' -Anrede 'Hallo Herr Müller,' `
             -Text "Die Migration ist durch.`n`nAlle Dienste laufen stabil." `
             -Fakten ([ordered]@{ 'Dauer' = '3 h 12 min'; 'Postfächer' = '412' }) `
             -AbsenderName 'S. Grewing' -AbsenderRolle 'Consultant'
-    Save-JarvisMailPreview -Html $html -Path .\vorschau.html
-    Send-JarvisMail -From 'ich@firma.de' -To 'kunde@firma.de' -Betreff 'Statusbericht KW 43' -Html $html -WhatIf
+    Save-VegaMailPreview -Html $html -Path .\vorschau.html
+    Send-VegaMail -From 'ich@firma.de' -To 'kunde@firma.de' -Betreff 'Statusbericht KW 43' -Html $html -WhatIf
 #>
 
-$script:JarvisRoot = $PSScriptRoot
-if (-not $script:JarvisRoot) { $script:JarvisRoot = (Get-Location).Path }
+$script:VegaRoot = $PSScriptRoot
+if (-not $script:VegaRoot) { $script:VegaRoot = (Get-Location).Path }
 
-function ConvertTo-JarvisHtmlText {
+function ConvertTo-VegaHtmlText {
     param([string]$Text)
     [System.Net.WebUtility]::HtmlEncode($Text)
 }
 
-function New-JarvisMailHtml {
+function New-VegaMailHtml {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)][string]$Betreff,
@@ -47,13 +47,13 @@ function New-JarvisMailHtml {
         [string]$Gruss          = 'Viele Grüße',
         [string]$AbsenderName   = '',
         [string]$AbsenderRolle  = '',
-        [string]$Fusszeile      = 'Diese Nachricht wurde mit dem JARVIS-Mail-Template erstellt.',
+        [string]$Fusszeile      = 'Diese Nachricht wurde mit dem VEGA-Mail-Template erstellt.',
         [switch]$TextIsHtml,
-        [string]$TemplatePath   = (Join-Path $script:JarvisRoot 'jarvis-mail-template.html')
+        [string]$TemplatePath   = (Join-Path $script:VegaRoot 'vega-mail-template.html')
     )
 
     $tpl = Get-Content -Path $TemplatePath -Raw -Encoding UTF8
-    $e   = { param($s) ConvertTo-JarvisHtmlText $s }
+    $e   = { param($s) ConvertTo-VegaHtmlText $s }
 
     # Fließtext: Leerzeilen = Absatz, einfache Umbrüche = <br>
     if ($TextIsHtml) {
@@ -110,20 +110,20 @@ function New-JarvisMailHtml {
     $tpl
 }
 
-function Save-JarvisMailPreview {
+function Save-VegaMailPreview {
     <# Schreibt eine Browser-Vorschau; das cid-Logo wird dafür als data:-URI eingebettet. #>
     param(
         [Parameter(Mandatory)][string]$Html,
         [Parameter(Mandatory)][string]$Path,
-        [string]$LogoPath = (Join-Path $script:JarvisRoot 'jarvis-logo.png')
+        [string]$LogoPath = (Join-Path $script:VegaRoot 'vega-logo.png')
     )
     $b64 = [Convert]::ToBase64String([IO.File]::ReadAllBytes($LogoPath))
-    $Html.Replace('cid:jarvis-logo.png', "data:image/png;base64,$b64") |
+    $Html.Replace('cid:vega-logo.png', "data:image/png;base64,$b64") |
         Set-Content -Path $Path -Encoding UTF8
     Get-Item $Path
 }
 
-function Send-JarvisMail {
+function Send-VegaMail {
     <#
     .SYNOPSIS  Sendet die Mail über Microsoft Graph (Modul Microsoft.Graph.Users.Actions).
     .NOTES     Vorher: Connect-MgGraph -Scopes Mail.Send
@@ -135,7 +135,7 @@ function Send-JarvisMail {
         [string[]]$Cc,
         [Parameter(Mandatory)][string]$Betreff,
         [Parameter(Mandatory)][string]$Html,
-        [string]$LogoPath = (Join-Path $script:JarvisRoot 'jarvis-logo.png'),
+        [string]$LogoPath = (Join-Path $script:VegaRoot 'vega-logo.png'),
         [switch]$NoSaveToSentItems
     )
 
@@ -150,9 +150,9 @@ function Send-JarvisMail {
             CcRecipients  = $ccRcpt
             Attachments   = @(@{
                 '@odata.type' = '#microsoft.graph.fileAttachment'
-                Name          = 'jarvis-logo.png'
+                Name          = 'vega-logo.png'
                 ContentType   = 'image/png'
-                ContentId     = 'jarvis-logo.png'
+                ContentId     = 'vega-logo.png'
                 IsInline      = $true
                 ContentBytes  = [Convert]::ToBase64String([IO.File]::ReadAllBytes($LogoPath))
             })
@@ -160,7 +160,7 @@ function Send-JarvisMail {
         SaveToSentItems = -not $NoSaveToSentItems
     }
 
-    if ($PSCmdlet.ShouldProcess(($To -join ', '), "JARVIS-Mail '$Betreff' senden")) {
+    if ($PSCmdlet.ShouldProcess(($To -join ', '), "VEGA-Mail '$Betreff' senden")) {
         Send-MgUserMail -UserId $From -BodyParameter $params
     }
 }

@@ -1,12 +1,12 @@
-# JARVIS-Mail-Template
+# VEGA-Mail-Template
 
-HTML-Mail-Vorlage im JARVIS-Design (Nachtkopf mit Logo, orange Akzentlinie, heller Inhalt) plus PowerShell-Funktionen zum Befüllen, Vorschauen und Versenden.
+HTML-Mail-Vorlage im VEGA-Design (Nachtkopf mit Logo, Bernstein-Akzentlinie, heller Inhalt) plus PowerShell-Funktionen zum Befüllen, Vorschauen und Versenden.
 
 | Datei | Zweck |
 |---|---|
-| `jarvis-mail-template.html` | Vorlage mit `{{PLATZHALTERN}}`, Tabellen-Layout + Inline-CSS, Outlook-Fallbacks (VML-Button, feste 600 px) |
-| `jarvis-logo.png` | Lockup 260×64 in 2× (520×128), wird als Inline-Anhang `cid:jarvis-logo.png` eingebettet |
-| `JarvisMail.ps1` | `New-JarvisMailHtml`, `Save-JarvisMailPreview`, `Send-JarvisMail` (Microsoft Graph) |
+| `vega-mail-template.html` | Vorlage mit `{{PLATZHALTERN}}`, Tabellen-Layout + Inline-CSS, Outlook-Fallbacks (VML-Button, feste 600 px) |
+| `vega-logo.png` | Lockup (Variante on-dark) 202×64, als PNG in 2× für 101×32 (404×128), wird als Inline-Anhang `cid:vega-logo.png` eingebettet |
+| `VegaMail.ps1` | `New-VegaMailHtml`, `Save-VegaMailPreview`, `Send-VegaMail` (Microsoft Graph) |
 
 ## Platzhalter
 
@@ -17,25 +17,25 @@ Optionale Blöcke stehen zwischen `<!-- BLOCK:NAME -->` und `<!-- /BLOCK:NAME --
 ## Nutzung (PowerShell)
 
 ```powershell
-. .\JarvisMail.ps1
-$html = New-JarvisMailHtml -Betreff 'Statusbericht KW 43' -Kategorie 'Status-Update' `
+. .\VegaMail.ps1
+$html = New-VegaMailHtml -Betreff 'Statusbericht KW 43' -Kategorie 'Status-Update' `
         -Titel 'Migration abgeschlossen' -Anrede 'Hallo Herr Müller,' `
         -Text "Die Migration ist durch.`n`nAlle Dienste laufen stabil." `
         -Fakten ([ordered]@{ 'Dauer' = '3 h 12 min'; 'Postfächer' = '412' }) `
         -AbsenderName 'S. Grewing' -AbsenderRolle 'Consultant'
 
-Save-JarvisMailPreview -Html $html -Path .\vorschau.html   # Browser-Vorschau, Logo als data:-URI
+Save-VegaMailPreview -Html $html -Path .\vorschau.html   # Browser-Vorschau, Logo als data:-URI
 
 Connect-MgGraph -Scopes Mail.Send
-Send-JarvisMail -From 'ich@firma.de' -To 'kunde@firma.de' -Betreff 'Statusbericht KW 43' -Html $html -WhatIf
+Send-VegaMail -From 'ich@firma.de' -To 'kunde@firma.de' -Betreff 'Statusbericht KW 43' -Html $html -WhatIf
 ```
 
-`Send-JarvisMail` hat `ConfirmImpact = 'High'`, fragt also vor dem Senden nach; `-WhatIf` zeigt nur, was passieren würde. Getestet mit PowerShell 7.4.
+`Send-VegaMail` hat `ConfirmImpact = 'High'`, fragt also vor dem Senden nach; `-WhatIf` zeigt nur, was passieren würde. Getestet mit PowerShell 7.4.
 
 ## Nutzung über Claude / Gmail
 
-Template befüllen, Logo als Inline-Anhang (`inline: true`, Dateiname `jarvis-logo.png`) mitgeben, zusätzlich eine Plain-Text-Fassung als `body`. Standardmäßig erst als Entwurf anlegen.
+Template befüllen, Logo als Inline-Anhang (`inline: true`, Dateiname `vega-logo.png`) mitgeben, zusätzlich eine Plain-Text-Fassung als `body`. Standardmäßig erst als Entwurf anlegen.
 
 ## Designentscheidung
 
-Inhalt hell statt Nacht-Theme: dunkle Mails werden von Outlook/Gmail im Dark Mode unzuverlässig umgefärbt und drucken schlecht. Die Marke trägt der dunkle Kopf. Farben aus den JARVIS-Tokens (Tag-Theme): `orange` #b84a08 für den Button, `sky` #0b6a99 für Links/Labels, `ink` #0f171d, `ink-muted` #4e5f6b.
+Inhalt hell statt Nacht-Theme: dunkle Mails werden von Outlook/Gmail im Dark Mode unzuverlässig umgefärbt und drucken schlecht. Die Marke trägt der dunkle Kopf. Farben aus den VEGA-Tokens (Tag-Theme): `amber` #9a5b00 für den Button, `blue` #2856b8 für Links/Labels, `ink` #0e1526, `ink-muted` #535e73; Kopf `vega-night` #0a0f1c, Akzentlinie `vega-amber` #ffb547.
